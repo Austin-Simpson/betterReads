@@ -6,9 +6,25 @@ import {
   Description,
   CodeTag,
 } from '../components/sharedstyles'
-import Cards from '../components/cards'
+import useSWR from 'swr'
+import BookList from '../components/BookList'
+import Cards from '../components/cards';
+
+
+// Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Home() {
+  // Set up SWR to run the fetcher function when calling "/api/staticdata"
+  // There are 3 possible states: (1) loading when data is null (2) ready when the data is returned (3) error when there was an error fetching the data
+  const { data, error } = useSWR('/api/staticdata', fetcher);
+
+  // Handle the error state
+  if (error) return <Main>Failed to load</Main>;
+  // Handle the loading state
+  if (!data) return <Main>Loading...</Main>;
+  // Handle the ready state and display the result contained in the data object mapped to the structure of the json file
+
   return (
     <Container>
       <Head>
@@ -17,17 +33,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </Title>
-
-        <Description>
-          Get started by editing
-          <CodeTag>pages/index.tsx</CodeTag>
-        </Description>
-
-        <Cards />
+        <h1>BetterReads</h1>
+        <BookList books ={data} />
       </Main>
     </Container>
-  )
+  );
 }
