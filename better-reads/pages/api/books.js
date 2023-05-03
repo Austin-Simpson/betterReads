@@ -1,3 +1,13 @@
+/*
+TODO: create an API endpoint for authors/index.js
+that sends back all authors in the dataset
+
+create an API endpoint for authors/[name].js
+that sends back info on a particular author by name
+
+you can choose how to structure data
+*/
+
 // this is what gets run when you go to the url: /api/books
 // every file in the api subdirectory gets deployed as its own serverless function
 
