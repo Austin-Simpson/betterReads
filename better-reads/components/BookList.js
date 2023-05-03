@@ -16,5 +16,8 @@ export default function BookList({ books }) {
   
 const Wrapper = styled.div`
     display: flex;
-    
+    max-width: 100%;
+    flex-wrap: wrap;
+    // fill width
+    justify-content: space-evenly;
 `

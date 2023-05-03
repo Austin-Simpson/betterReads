@@ -3,19 +3,20 @@ import styled from 'styled-components'
 const Container = styled.div`
   padding: 0 0.5rem;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  min-height: 100vh;
+  max-width: 100%;
 `
+
 const Main = styled.main`
-  padding: 5rem 0;
+  padding: 1rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 `
 
 const Title = styled.h1`
@@ -41,6 +42,7 @@ const Description = styled.p`
   line-height: 1.5;
   font-size: 1.5rem;
 `
+
 const CodeTag = styled.code`
   background: #fafafa;
   border-radius: 5px;
@@ -51,4 +53,20 @@ const CodeTag = styled.code`
     Bitstream Vera Sans Mono, Courier New, monospace;
 `
 
-export { Container, Main, Title, Description, CodeTag }
+const Card = styled.div`
+  max-width: 100%;
+  background: #fafafa;
+  font-size: 1.1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;  
+`
+
+export { Container, Main, Title, Description, CodeTag, Card, Wrapper }
